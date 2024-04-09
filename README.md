@@ -30,6 +30,28 @@ The HostIP can be found on the Optitrack data streaming configuration.
 
 Call the .connect() and .disconnect() at the beginning and at the end of your code.
 
+**See code below**
+
+```matlab
+% Motive Tracker network configuration
+% If the server is configured on its loopback address, set 127.0.0.1
+% Otherwise, configure the address on the Optitrack streaming server
+% public address
+HOST_ADDR = '127.0.0.1';
+CLIENT_ADDR = '127.0.0.1';
+
+% Initialize the link between Optitrack
+optilink = Optilink(HOST_ADDR, CLIENT_ADDR);
+
+% Connect to the server
+optilink.connect();
+
+while true
+    % Retrieve the drones
+    drones = optilink.fetchOptitrackGroundTruth();
+end
+```
+
 ### Simulink
 
 Add the OptilinkSystem block to your Simulink model and connect it as needed within your simulation.
@@ -42,7 +64,7 @@ The simulink block will automatically connect to the server on startup and disco
 
 ## NatNetSDK
 
-This project relies on the NatNetSDK : (https://optitrack.com/software/natnet-sdk/)[https://optitrack.com/software/natnet-sdk/]
+This project relies on the NatNetSDK : https://optitrack.com/software/natnet-sdk/
 
 The SDK is packaged as an archive in this project and must be unzipped before using in your project.
 

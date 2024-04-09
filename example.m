@@ -1,9 +1,14 @@
 % Motive Tracker network configuration
 % If the server is configured on its loopback address, set 127.0.0.1
-% Otherwise, configure the address on 10.30.152.23
+% Otherwise, configure the address on the Optitrack streaming server
+% public address
 HOST_ADDR = '127.0.0.1';
+CLIENT_ADDR = '127.0.0.1';
 
-optilink = Optilink(HOST_ADDR);
+% Initialize the link between Optitrack
+optilink = Optilink(HOST_ADDR, CLIENT_ADDR);
+
+% Connect to the server
 optilink.connect();
 
 while true
