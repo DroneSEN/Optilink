@@ -14,6 +14,15 @@ This tool is still in development.
 
 ## How to use
 
+### Setup
+
+1. Extract the NatNet SDK of your Operating System (Windows or Ubuntu/Debian)
+2. Add to path the Optilink directory in your project `(Right click on directory > Add to path > Selected folders and subfolders)`
+3. When first running the program, a dialog box will ask for the NatNetML library
+  
+  - On Windows : `NatNetSDK>lib>x64>NatNetML.dll`
+  - On Linux : `NatNetSDK>lib>libNatNet.so`
+
 ### Calibration files
 
 This project contains Optitrack calibration files, to be used in the ESTACA drone room, with the Motive Tracker software.
