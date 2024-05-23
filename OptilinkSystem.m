@@ -8,6 +8,8 @@ classdef OptilinkSystem < matlab.System
     properties
         HostIP (1, :) char = '127.0.0.1'
         ClientIP (1, :) char = '127.0.0.1'
+        
+        RigidbodyID = 1; % Rigidbody ID
     end
 
     % Pre-computed constants or internal states
@@ -48,12 +50,16 @@ classdef OptilinkSystem < matlab.System
 
                 drone_matrice = zeros(4,4);
                 
-                if rigidBodies > 0
-                    rigidbody = frame.RigidBodies(1);
-                    t = [rigidbody.z rigidbody.x rigidbody.y];
-                    q = [rigidbody.qx rigidbody.qy rigidbody.qz rigidbody.qw];
+                % Retrieve the rigid body data and format it as a 4x4 Homogeneous Matrix
+                if rigidBodies > 0 && obj.RigidbodyID <= rigidBodies
+                    rigidbody = frame.RigidBodies(obj.RigidbodyID);
+                    t = [ rigidbody.x rigidbody.y rigidbody.z];
+                    q = [rigidbody.qw rigidbody.qx rigidbody.qy rigidbody.qz];
                     drone_matrice = Optilink.quaternionTranslationToTForm(q, t);
                 end
+
+                % Update the latest correct position
+                % TODO: Implement a Kalman filter to smooth the data and avoid jumps
                 obj.LatestCorrectPos = drone_matrice;
                 drones = drone_matrice;
                 connected = 1;
