@@ -3,14 +3,17 @@ A tool to link Optitrack to Matlab/Simulink.
 
 This tool is still in development.
 
-## Installation
+## Setup
 
 ⚠️ This project only works on Windows and Linux (Ubuntu and Fedora)
 
 1. Place the Optilink directory in your Matlab project 
 2. Unzip the NatNetSDK archive, since it contains the .DLL file required for communicating with Optitrack
 3. In Matlab, right click on the "Optilink" directory > Add to path > Selected folders and subfolders 
-4. On first use of the Optilink tool, Matlab will open a dialog box to select the library file. Select the file in `NatNetSDK/lib/x64/NatNetML.dll`.
+4. On first use of the Optilink tool, Matlab will open a dialog box to select the library file.
+
+  - On Windows : `NatNetSDK>lib>x64>NatNetML.dll`
+  - On Linux : `NatNetSDK>lib>libNatNet.so`
 
 ## How to use
 
