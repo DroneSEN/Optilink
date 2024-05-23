@@ -6,8 +6,8 @@ classdef OptilinkSystem < matlab.System
 
     % Public, tunable properties
     properties
-        HostIP (1, :) char = '127.0.0.1'
-        ClientIP (1, :) char = '127.0.0.1'
+        HostIP (1, :) char = '127.0.0.1' % Optitrack server IP
+        ClientIP (1, :) char = '127.0.0.1' % Client IP
         
         RigidbodyID = 1; % Rigidbody ID
     end
